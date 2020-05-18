@@ -1,6 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './reducers';
 import Header from './components/Header';
 import NavigationBar from './components/NavigationBar';
 import Content from './components/Content';
@@ -45,10 +48,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const state = {
-  user: null
-};
-
 function App() {
 
   const styles = useStyles();
@@ -56,12 +55,14 @@ function App() {
   document.body.style.color = grey[600];
 
   return (
-    <div className={styles.root}>
-      <div className={styles.header}><Header /></div>
-      <div className={styles.navigation}><NavigationBar /></div>
-      <div className={styles.content}><Content /></div>
-      <div className={styles.footer}><Footer /></div>
-    </div>
+    <Provider store={createStore(rootReducer)}>
+      <div className={styles.root}>
+        <div className={styles.header}><Header /></div>
+        <div className={styles.navigation}><NavigationBar /></div>
+        <div className={styles.content}><Content /></div>
+        <div className={styles.footer}><Footer /></div>
+      </div>
+    </Provider>
   );
 }
 

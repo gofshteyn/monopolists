@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import RootContent from '../../containers/RootContent';
 import { makeStyles, Tooltip, IconButton, Typography } from '@material-ui/core';
 import { cyan, grey } from '@material-ui/core/colors';
-//import AuthPanel from './AuthPanel';
-//import UserPanel from './UserPanel';
+import AuthPanel from './AuthPanel';
+import UserPanel from './UserPanel';
 import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 function Header(props) {
 
     const styles = useStyles();
-    //const user = useSelector(state => state.user);
+    const user = useSelector(state => state.user);
     
     return (
         <RootContent>
@@ -56,7 +56,7 @@ function Header(props) {
                     <Typography variant="subtitle2">Экономическая online игра!</Typography>
                 </div>
                 <div className={styles.userPanel}>
-                    {/* { user && Object.getOwnPropertyNames(user).length > 0 ? <UserPanel user={user} /> : <AuthPanel /> } */}
+                    { user && user.isAuthorized ? <UserPanel user={user} /> : <AuthPanel /> }
                 </div>
             </header>
         </RootContent>
