@@ -1,10 +1,11 @@
 import React from 'react';
+import PaperContent from '../../containers/PaperContent';
 
 function MainPage () {
     return (
-        <div>
+        <PaperContent>
             MainPage
-        </div>
+        </PaperContent>
     );
 }
 
