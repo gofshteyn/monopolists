@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import UserPanel from './components/Header/UserPanel';
 
 //import logo from './logo.svg';
+// Проверка
 
 const useStyles = makeStyles(theme => ({
   root: {
